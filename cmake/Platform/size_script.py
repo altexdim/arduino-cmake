@@ -74,7 +74,7 @@ output = subprocess.check_output(args.cmd + " " + args.param, shell=True)
 
 size_complete = 0
 if args.regex and args.regex != "":
-    nums = re.findall(args.regex + "", output, re.MULTILINE)
+    nums = re.findall(args.regex + "", output.decode(), re.MULTILINE)
     if nums:
         size_complete = sum(map(int, nums))
     else:
@@ -83,13 +83,13 @@ if args.regex and args.regex != "":
 
 size_data = 0
 if args.regex_data and args.regex_data != "":
-    nums = re.findall(args.regex_data + "", output, re.MULTILINE)
+    nums = re.findall(args.regex_data + "", output.decode(), re.MULTILINE)
     if nums:
         size_data = sum(map(int, nums))
 
 size_eeprom = 0
 if args.regex_eeprom and args.regex_eeprom != "":
-    nums = re.findall(args.regex_eeprom + "", output, re.MULTILINE)
+    nums = re.findall(args.regex_eeprom + "", output.decode(), re.MULTILINE)
     if nums:
         size_eeprom = sum(map(int, nums))
 
